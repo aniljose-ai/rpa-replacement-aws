@@ -1,0 +1,23 @@
+# ---------------------------------------------------------------------------
+# Copy to development.tfvars and fill in your values.
+# *.tfvars is gitignored — never commit it.
+# Apply with: terraform apply -var-file="env/development.tfvars"
+# ---------------------------------------------------------------------------
+
+region          = "us-east-1"
+environment     = "dev"
+automation_name = "rpa"
+
+# DynamoDB
+table_name = "automation_tasks"
+
+# Fan-out tuning
+max_concurrency      = 10
+task_timeout_seconds = 3600
+
+# Automation
+headless = true
+dry_run  = false
+
+# EventBridge schedule (rate or cron expression)
+schedule_expression = "rate(5 minutes)"

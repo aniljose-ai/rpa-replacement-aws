@@ -1,0 +1,57 @@
+# ── Secrets & credentials ────────────────────────────────────────────────────
+.env
+*.env
+!.env.example
+.claude/settings.local.json
+
+# Track README files only; ignore other Markdown docs
+*.md
+!README.md
+!**/README.md
+
+# Terraform backend config and tfvars contain account IDs / bucket names
+terraform/env/*.tfbackend
+terraform/env/*.tfvars
+
+# ── Terraform state & local cache ────────────────────────────────────────────
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Terraform lock file — keep local only
+**/.terraform.lock.hcl
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# ── Node (if any demo tooling) ───────────────────────────────────────────────
+node_modules/
+
+# ── OS / editor ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Test / build artifacts ───────────────────────────────────────────────────
+/tmp/
+*.png
+*.pdf
+*.csv
+!docs/images/*.png
+
+# ── AWS SSO cache (never commit) ─────────────────────────────────────────────
+.aws/
