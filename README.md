@@ -80,12 +80,15 @@ from processing the same item simultaneously — safe for concurrent fan-out.
 
 This architecture scales to 1,000+ parallel tasks by changing a single number.
 
-| Bots running in parallel | UiPath cost (licensing only) | This architecture |
-|---|---|---|
-| 3 | ~$45,000/yr | ~$0.004/run |
-| 10 | ~$150,000/yr | ~$0.013/run |
-| 100 | ~$1,500,000/yr | ~$0.13/run |
-| 1,000 | ~$15,000,000/yr | ~$1.50/run |
+| Bots in parallel | UiPath / yr | Power Automate / yr | This architecture / run | **This architecture / yr\*** |
+|---|---|---|---|---|
+| 3 | ~$45,000 | ~$7,500 | ~$0.004 | **~$15** |
+| 10 | ~$150,000 | ~$25,000 | ~$0.013 | **~$50** |
+| 100 | ~$1,500,000 | ~$250,000 | ~$0.13 | **~$500** |
+| 1,000 | ~$15,000,000 | ~$2,500,000 | ~$1.50 | **~$5,000** |
+
+> \* Yearly AWS cost assumes one nightly pipeline run, 365 days/year, ~2 min per task, 1 vCPU / 2 GB Fargate.
+> Shared infrastructure (VPC, NAT if used) adds a small fixed cost not reflected above.
 
 > The secret: ECS Fargate charges per container-second.
 > 1,000 containers running 2 minutes in parallel costs the same as
